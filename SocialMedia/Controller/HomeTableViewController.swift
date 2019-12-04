@@ -13,21 +13,43 @@ class HomeTableViewController: UITableViewController {
     var users = [User]()
     var userData = "https://api.myjson.com/bins/mnlx0"
     var api = "https://engineering.league.com/challenge/api/"
-    i
+    
     @IBOutlet var postTableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         postTableView.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "postCell")
-        
-        getUserData()
 
+        getUserData()
+        
     }
     
     func getUserData(){
-        APIController.shared.fetchUserToken(userName: "Bret", password: "", completion: { (result, error) in
-            print(result as Any)
+        APIController.shared.fetchUserToken(userName: "", password: "", completion: { (result, error) in
+            //Check for any errors
+            guard error == nil else {
+                print("error calling GET on /login")
+                print(error!)
+                return
+            }
+            //Make sure we got data
+            guard let result = result else {
+                print("Error: did not receive data")
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                if let url = URL(string: APIController.shared.loginAPI) {
+                    if let json = try? Data(contentsOf: url) {
+                        let result = try decoder.decode(User.self, from: json)
+                        print(result.apiKey)
+                        return
+                    }
+                }
+            } catch let err {
+                print("Error, ", err)
+            }
         })
     }
     

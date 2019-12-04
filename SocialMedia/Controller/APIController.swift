@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 class APIController {
-    static let user = "user"
+    static let user = "Bret"
     static let password = "password"
     
     static let domain = "https://engineering.league.com/challenge/api/"
