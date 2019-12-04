@@ -16,6 +16,7 @@ class APIController {
     static let domain = "https://engineering.league.com/challenge/api/"
     let loginAPI = domain + "login"
     
+    //In case Alamofire gets removed (connector as middleware to the library), so code doesn't get affected
     static let shared = APIController()
     
     fileprivate var userToken: String?
