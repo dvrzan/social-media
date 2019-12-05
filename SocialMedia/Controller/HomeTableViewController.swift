@@ -11,53 +11,22 @@ import UIKit
 class HomeTableViewController: UITableViewController {
     
     var users = [User]()
-    var userData = "https://api.myjson.com/bins/mnlx0"
-    var api = "https://engineering.league.com/challenge/api/"
+    var posts = [Post]()
+    var albums = [Album]()
+    var photos = [Photo]()
     
     @IBOutlet var postTableView: UITableView!
+    
+    var ApiController = APIController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         postTableView.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "postCell")
-
-        getUserData()
         
+        ApiController.fetchUsers()
     }
     
-    func getUserData(){
-        APIController.shared.fetchUserToken(userName: "", password: "", completion: { (result, error) in
-            //Check for any errors
-            guard error == nil else {
-                print("error calling GET on /login")
-                print(error!)
-                return
-            }
-            //Make sure we got data
-            guard let result = result else {
-                print("Error: did not receive data")
-                return
-            }
-            do {
-                let decoder = JSONDecoder()
-                if let url = URL(string: APIController.shared.loginAPI) {
-                    if let json = try? Data(contentsOf: url) {
-                        let result = try decoder.decode(User.self, from: json)
-                        print(result.apiKey)
-                        return
-                    }
-                }
-            } catch let err {
-                print("Error, ", err)
-            }
-        })
-    }
-    
-    func parseJson(api: String) {
-        APIController.shared.request(url: URL(string: api)!, completion: { (result, error) in
-            print(result as Any)
-        })
-    }
     
 
     // MARK: - Table view data source
@@ -81,5 +50,11 @@ class HomeTableViewController: UITableViewController {
         return cell
     }
     */
+    
+    func showError() {
+        let alert = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
 
 }

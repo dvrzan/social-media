@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  UserModel.swift
 //  SocialMedia
 //
 //  Created by Danijela Vrzan on 2019-12-03.
@@ -9,9 +9,8 @@
 import UIKit
 
 struct User: Decodable {
-    let apiKey: String
     let id: Int
-    let avatar: Avatar
+    //let avatar: Avatar
     let name: String
     let username: String
     let email: String
@@ -19,19 +18,6 @@ struct User: Decodable {
     let phone: String
     let website: URL
     let company: Company
-    
-    private enum CodingKeys: String, CodingKey {
-        case apiKey = "api_key"
-        case id
-        case avatar
-        case name
-        case username
-        case email
-        case address
-        case phone
-        case website
-        case company
-    }
     
     struct Address: Decodable {
         let street: String
@@ -41,11 +27,11 @@ struct User: Decodable {
         let geo: Geo
     }
     
-    struct Avatar: Decodable {
-        let large: URL
-        let medium: URL
-        let thumbnail: URL
-    }
+//    struct Avatar: Decodable {
+//        let large: URL
+//        let medium: URL
+//        let thumbnail: URL
+//    }
     
     struct Geo: Decodable {
         let lat: String
@@ -79,3 +65,4 @@ struct Photo: Decodable {
     let url: URL
     let thumbnailUrl: URL
 }
+

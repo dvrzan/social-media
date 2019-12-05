@@ -6,55 +6,49 @@
 //  Copyright © 2019 Danijela Vrzan. All rights reserved.
 //
 
-import Foundation
-import Alamofire
+import UIKit
 
 class APIController {
-    static let user = "Bret"
-    static let password = "password"
     
-    static let domain = "https://engineering.league.com/challenge/api/"
-    let loginAPI = domain + "login"
+    let usersEndpoint = "https://jsonplaceholder.typicode.com/users"
+    let postsEndpoint = "https://jsonplaceholder.typicode.com/posts"
+    let photosEndpoint = "https://jsonplaceholder.typicode.com/photos"
+    let albumsEndpoint = "https://jsonplaceholder.typicode.com/albums"
     
-    //In case Alamofire gets removed (connector as middleware to the library), so code doesn't get affected
-    static let shared = APIController()
+    func fetchUsers() {
+        performRequest(urlString: usersEndpoint)
+    }
     
-    fileprivate var userToken: String?
-    
-    func fetchUserToken(userName: String, password: String, completion: @escaping (String?, Error?) -> Void) {
-        guard let url = URL(string: loginAPI) else {
-            return
-        }
-        var headers: HTTPHeaders = [:]
-        
-        if let authorizationHeader = Request.authorizationHeader(user: userName, password: password) {
-            headers[authorizationHeader.key] = authorizationHeader.value
-        }
-        
-        Alamofire.request(url, headers: headers).responseJSON { (response) in
-            guard response.error == nil else {
-                completion(nil, response.error)
-                return
-            }
+    func performRequest(urlString: String) {
+        //Create URL
+        if let url = URL(string: urlString) {
+            //Create session URL
+            let session = URLSession(configuration: .default)
+            //Give session a task
             
-            if let value = response.result.value as? [AnyHashable : Any] {
-                self.userToken = value["api_key"] as? String
+            let task = session.dataTask(with: url) { (data, response, error) in
+                if error != nil {
+                    print(error!)
+                    return
+                }
+                if let safeData = data {
+                    self.parseJSON(data: safeData)
+                }
             }
-            completion(self.userToken, nil)
+            //Start the task
+            task.resume()
         }
     }
     
-    func request(url: URL, completion: @escaping (Any?, Error?) -> Void) {
-        guard let userToken = userToken else {
-            NSLog("No user token set")
-            completion(nil, nil)
-            return
-        }
-        let authHeader: HTTPHeaders = ["x-access-token" : userToken]
-        
-        Alamofire.request(url, method: .get
-            , parameters: nil, encoding: URLEncoding.default, headers: authHeader).responseJSON { (response) in
-                completion(response.result.value, response.error)
+    func parseJSON(data: Data) {
+        let decoder = JSONDecoder()
+        do {
+            let decodedData = try decoder.decode([User].self, from: data)
+            for data in decodedData {
+                print(data.id)
+            }
+        } catch {
+            print(error)
         }
         
     }
