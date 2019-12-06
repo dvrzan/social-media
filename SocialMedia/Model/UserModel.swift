@@ -10,7 +10,7 @@ import UIKit
 
 struct User: Decodable {
     let id: Int
-    //let avatar: Avatar
+    let avatar: Avatar
     let name: String
     let username: String
     let email: String
@@ -27,11 +27,11 @@ struct User: Decodable {
         let geo: Geo
     }
     
-//    struct Avatar: Decodable {
-//        let large: URL
-//        let medium: URL
-//        let thumbnail: URL
-//    }
+    struct Avatar: Decodable {
+        let large: URL
+        let medium: URL
+        let thumbnail: URL
+    }
     
     struct Geo: Decodable {
         let lat: String

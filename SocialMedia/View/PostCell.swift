@@ -16,3 +16,4 @@ class PostCell: UITableViewCell {
     @IBOutlet var descriptionLabel: UILabel!
     
 }
+

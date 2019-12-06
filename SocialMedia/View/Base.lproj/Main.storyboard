@@ -7,16 +7,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home-->
+        <!--Posts-->
         <scene sceneID="MGB-1p-g1b">
             <objects>
-                <tableViewController title="Home" id="FwJ-zU-nDt" customClass="HomeTableViewController" customModule="SocialMedia" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Posts" id="FwJ-zU-nDt" customClass="HomeTableViewController" customModule="SocialMedia" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2AG-5v-Cga">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" id="ZcJ-p6-TbE">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell1" id="ZcJ-p6-TbE">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZcJ-p6-TbE" id="q8R-2X-zIh">
@@ -27,13 +27,21 @@
                                     <segue destination="4GW-U4-6Z7" kind="show" id="oOg-aG-qVW"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell2" id="yVH-KZ-5sg">
+                                <rect key="frame" x="0.0" y="71.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yVH-KZ-5sg" id="n7h-FH-8Ve">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="FwJ-zU-nDt" id="SlI-VV-svB"/>
                             <outlet property="delegate" destination="FwJ-zU-nDt" id="dTg-YQ-QAF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Home" id="GZ1-FG-3Wv"/>
+                    <navigationItem key="navigationItem" title="Posts" id="GZ1-FG-3Wv"/>
                     <connections>
                         <outlet property="postTableView" destination="2AG-5v-Cga" id="3iB-ob-AFs"/>
                     </connections>
@@ -61,7 +69,6 @@
         <!--Navigation Controller-->
         <scene sceneID="rBY-U7-Wmf">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wcM-MP-cRj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="ViQ-Z7-pcK" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TG6-jO-297">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -71,6 +78,7 @@
                         <segue destination="FwJ-zU-nDt" kind="relationship" relationship="rootViewController" id="Yth-f5-hpr"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wcM-MP-cRj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-245" y="113"/>
         </scene>
