@@ -6,7 +6,7 @@
 //  Copyright © 2019 Danijela Vrzan. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 struct User: Decodable {
     let id: Int
@@ -45,24 +45,20 @@ struct User: Decodable {
     }
 }
 
-struct Post: Decodable {
-    let userId: Int
-    let id: Int
-    let title: String
-    let body: String
+extension User {
+    static func users() -> [User] {
+        guard
+            let url = URL(string: APIController.shared.usersEndpoint),
+            let data = try? Data(contentsOf: url)
+            else {
+                return []
+        }
+        do {
+            let decoder = JSONDecoder()
+            return try decoder.decode([User].self, from: data)
+        } catch {
+            return []
+        }
+    }
+    
 }
-
-struct Album: Decodable {
-    let userId: Int
-    let id: Int
-    let title: String
-}
-
-struct Photo: Decodable {
-    let albumId: Int
-    let id: Int
-    let title: String
-    let url: URL
-    let thumbnailUrl: URL
-}
-
