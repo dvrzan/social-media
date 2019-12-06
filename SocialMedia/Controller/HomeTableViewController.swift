@@ -25,6 +25,7 @@ class HomeTableViewController: UITableViewController {
         postTableView.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "postCell")
         
         requestUsers()
+        requestPosts()
 
     }
 
@@ -47,6 +48,21 @@ class HomeTableViewController: UITableViewController {
         }
     }
     
+    func requestPosts() {
+        if let url = URL(string: apiController.postsEndpoint) {
+            if let json = try? Data(contentsOf: url) {
+                parsePostJSON(data: json)
+            }
+        }
+    }
+    
+    func parsePostJSON(data: Data) {
+        let decoder = JSONDecoder()
+        if let decodedData = try? decoder.decode([Post].self, from: data) {
+            posts = decodedData
+        }
+    }
+    
     //MARK: - Error
     func showError() {
         let alert = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
@@ -57,19 +73,26 @@ class HomeTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return self.users.count
+        return self.posts.count
     }
     
 
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostCell
      
-        let user = self.users[indexPath.row]
-        cell.nameLabel.text = user.name
-        let data = try? Data(contentsOf: user.avatar.thumbnail)
-        cell.avatarImageView.image = UIImage(data: data!)
-     
+        //let user = self.users[indexPath.row]
+        let post = self.posts[indexPath.row]
+        
+        for user in users {
+            if post.userId == user.id {
+                cell.titleLabel.text = post.title
+                cell.descriptionLabel.text = post.body
+                cell.nameLabel.text = user.name
+                let data = try? Data(contentsOf: user.avatar.thumbnail)
+                cell.avatarImageView.image = UIImage(data: data!)
+            }
+        }
+        
         return cell
      }
     
