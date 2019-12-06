@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0AD26ECCCFE7CA9255533302 /* Pods_SocialMedia_SocialMediaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FC9F26959B09403A4BBEC2B /* Pods_SocialMedia_SocialMediaUITests.framework */; };
 		357BBCF6485A5A07B4B57F7F /* Pods_SocialMediaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E6A61C266B070CB4BC46B7C /* Pods_SocialMediaTests.framework */; };
+		7334E650239AA869009D9F66 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7334E64F239AA869009D9F66 /* ProfileViewController.swift */; };
 		7386723323973E8F00B1DB01 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7386723223973E8F00B1DB01 /* HomeTableViewController.swift */; };
 		73953DC92396AF3300F5C458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73953DC82396AF3300F5C458 /* AppDelegate.swift */; };
 		73953DCB2396AF3300F5C458 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73953DCA2396AF3300F5C458 /* SceneDelegate.swift */; };
@@ -48,6 +49,7 @@
 		50DD2AF4BEB2AD7EAB1D99FB /* Pods-SocialMedia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialMedia.release.xcconfig"; path = "Target Support Files/Pods-SocialMedia/Pods-SocialMedia.release.xcconfig"; sourceTree = "<group>"; };
 		5E6A61C266B070CB4BC46B7C /* Pods_SocialMediaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialMediaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FC9F26959B09403A4BBEC2B /* Pods_SocialMedia_SocialMediaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialMedia_SocialMediaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7334E64F239AA869009D9F66 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		7386723223973E8F00B1DB01 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		73953DC52396AF3300F5C458 /* SocialMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73953DC82396AF3300F5C458 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			children = (
 				73953DFB2396B77000F5C458 /* APIController.swift */,
 				7386723223973E8F00B1DB01 /* HomeTableViewController.swift */,
+				7334E64F239AA869009D9F66 /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				73953DCB2396AF3300F5C458 /* SceneDelegate.swift in Sources */,
 				73953DD32396AF3300F5C458 /* SocialMedia.xcdatamodeld in Sources */,
 				7386723323973E8F00B1DB01 /* HomeTableViewController.swift in Sources */,
+				7334E650239AA869009D9F66 /* ProfileViewController.swift in Sources */,
 				73953DFC2396B77000F5C458 /* APIController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
