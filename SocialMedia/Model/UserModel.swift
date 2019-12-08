@@ -16,7 +16,7 @@ struct User: Decodable {
     let email: String
     let address: Address
     let phone: String
-    let website: URL
+    let website: String
     let company: Company
     
     struct Address: Decodable {
@@ -43,22 +43,53 @@ struct User: Decodable {
         let catchPhrase: String
         let bs: String
     }
+    
 }
 
 extension User {
-    static func users() -> [User] {
-        guard
-            let url = URL(string: APIController.shared.usersEndpoint),
-            let data = try? Data(contentsOf: url)
-            else {
-                return []
-        }
-        do {
-            let decoder = JSONDecoder()
-            return try decoder.decode([User].self, from: data)
-        } catch {
-            return []
-        }
-    }
+    //        static func users() -> [User] {
+    //            guard
+    //                let url = URL(string: APIController.shared.usersEndpoint),
+    //                let data = try? Data(contentsOf: url)
+    //                else {
+    //                    return []
+    //            }
+    //            do {
+    //                let decoder = JSONDecoder()
+    //                return try decoder.decode([User].self, from: data)
+    //            } catch {
+    //                return []
+    //            }
+    //        }
+    
+//    static func getUsers(url: URL) {
+//        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+//            //Ensure there is no error for this HTTP response
+//            guard error == nil else {
+//                print("Error, \(error!)")
+//                return
+//            }
+//            //Ensure there is data returned from this HTTP response
+//            guard let data = data else {
+//                print("No data")
+//                return
+//            }
+//            do {
+//                let decoder = JSONDecoder()
+//                let data = try decoder.decode([User].self, from: data)
+//                HomeTableViewController.shared.users = data
+//
+//                DispatchQueue.main.async {
+//                    HomeTableViewController.shared.tableView.reloadData()
+//                }
+//
+//            } catch {
+//                print(error)
+//            }
+//        }
+//        //Execute the HTTP request
+//        task.resume()
+//    }
+    
     
 }

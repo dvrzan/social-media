@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class APIController {
     
@@ -17,6 +18,12 @@ class APIController {
     let postsEndpoint = domain + "posts"
     let albumsEndpoint = domain + "albums"
     let photosEndpoint = domain + "photos"
+    
+//    func request(url: URL, completion: @escaping (Any?, Error?) -> Void) {
+//        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default).responseJSON { (response) in
+//                completion(response.result.value, response.error)
+//        }
+//    }
 
 }
 

@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Posts-->
+        <!--Home-->
         <scene sceneID="MGB-1p-g1b">
             <objects>
-                <tableViewController title="Posts" id="FwJ-zU-nDt" customClass="HomeTableViewController" customModule="SocialMedia" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Home" id="FwJ-zU-nDt" customClass="HomeTableViewController" customModule="SocialMedia" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2AG-5v-Cga">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,7 +24,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="4GW-U4-6Z7" kind="show" id="oOg-aG-qVW"/>
+                                    <segue destination="4GW-U4-6Z7" kind="show" identifier="ShowProfileScreen" id="oOg-aG-qVW"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -47,7 +47,7 @@
         <!--Profile-->
         <scene sceneID="K1H-vH-o7O">
             <objects>
-                <viewController title="Profile" id="4GW-U4-6Z7" sceneMemberID="viewController">
+                <viewController title="Profile" id="4GW-U4-6Z7" customClass="ProfileViewController" customModule="SocialMedia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4aw-5t-qYw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -236,7 +236,7 @@
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <prototypes>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="0di-HP-l5L">
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="albumCell" id="0di-HP-l5L">
                                                                 <rect key="frame" x="0.0" y="28" width="398" height="43.5"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0di-HP-l5L" id="kPZ-zs-Tdm">
@@ -273,6 +273,21 @@
                         <viewLayoutGuide key="safeArea" id="oQc-ih-9HG"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="tC0-1Y-LUR"/>
+                    <connections>
+                        <outlet property="albumTableView" destination="m1L-7r-gOS" id="EBr-rz-Cx8"/>
+                        <outlet property="avatarImageView" destination="nAF-02-wQ3" id="jYu-jK-frJ"/>
+                        <outlet property="bsLabel" destination="WOW-v1-s7I" id="vj5-v3-xiw"/>
+                        <outlet property="catchPhraseLabel" destination="W7T-fW-vW5" id="TeQ-kB-fOm"/>
+                        <outlet property="cityLabel" destination="U9X-xS-0gt" id="zMs-cz-yqJ"/>
+                        <outlet property="companyLabel" destination="jFY-eS-kvd" id="veY-cC-aZi"/>
+                        <outlet property="emailLabel" destination="qxT-UZ-Nv6" id="JvM-Sz-aU6"/>
+                        <outlet property="nameLabel" destination="o9a-fB-drY" id="6gh-2K-XcD"/>
+                        <outlet property="phoneLabel" destination="vHV-xo-rXK" id="Crf-9j-1ca"/>
+                        <outlet property="streetLabel" destination="vHV-xo-rXK" id="IzO-Iu-v9F"/>
+                        <outlet property="suiteLabel" destination="g4a-5F-cG4" id="Cmn-eG-fdd"/>
+                        <outlet property="websiteLabel" destination="ObC-Hg-cbQ" id="RJH-Sn-luz"/>
+                        <outlet property="zipcodeLabel" destination="p34-eV-a36" id="04W-BD-2C5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pa1-zx-SKr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
