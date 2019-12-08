@@ -26,12 +26,6 @@ class HomeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //posts = Post.posts()
-        
-        //        User.getUsers(url: URL(string: APIController.shared.usersEndpoint)!)
-        //        DispatchQueue.main.async {
-        //            print(self.users)
-        //        }
         postTableView.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "postCell")
         
         fetchUsers(url: usersUrl!)
@@ -100,11 +94,21 @@ class HomeTableViewController: UITableViewController {
     
     //MARK: - Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let profileViewController = segue.destination as? ProfileViewController,
-            let post = sender as? Post else {
+        guard
+            segue.identifier == "ShowProfileScreen",
+            let indexPath = tableView.indexPathForSelectedRow,
+            let profileViewController = segue.destination as? ProfileViewController
+            else {
                 return
         }
-        profileViewController.selectedPost = post
+        
+        let post = posts[indexPath.row]
+        for user in users {
+            if post.userId == user.id {
+                profileViewController.user = user
+            }
+        }
+        
     }
     
     
