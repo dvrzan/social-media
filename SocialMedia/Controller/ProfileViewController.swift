@@ -7,8 +7,15 @@
 //
 
 import UIKit
+import MapKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UITableViewDataSource {
+    
+    var albums: [Album] = []
+    var photos: [Photo] = []
+    
+    let albumsUrl = URL(string: "https://jsonplaceholder.typicode.com/albums")
+    let photosUrl = URL(string: "https://jsonplaceholder.typicode.com/photos")
     
     @IBOutlet var avatarImageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
@@ -23,26 +30,43 @@ class ProfileViewController: UIViewController {
     @IBOutlet var catchPhraseLabel: UILabel!
     @IBOutlet var bsLabel: UILabel!
     
-    @IBOutlet var albumTableView: UITableView!
+    @IBOutlet var mapView: MKMapView!
     
-    var selectedPost: Post? {
-        didSet {
-            DispatchQueue.main.async {
-                self.configureView()
-            }
-        }
-    }
+    @IBOutlet var albumTableView: UITableView!
     
     var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureView()
+        albumTableView.dataSource = self
+        
+        let latitude = CLLocationDegrees(Double((user?.address.geo.lat)!)!)
+        let longitude = CLLocationDegrees(Double((user?.address.geo.lng)!)!)
+        
+        let location = Geo(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+        
+        configureUserInfo()
+        
+        mapView.addAnnotation(location)
+        mapView.setCenter(CLLocationCoordinate2D(latitude: latitude, longitude: longitude), animated: false)
+        
+        albumTableView.register(UINib(nibName: "AlbumCell", bundle: nil), forCellReuseIdentifier: "albumCell")
+        
+        fetchAlbums(url: albumsUrl!)
+        fetchPhotos(url: photosUrl!)
         
     }
     
-    func configureView() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let indexPath = albumTableView.indexPathForSelectedRow {
+            albumTableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+    
+    func configureUserInfo() {
         if let user = user,
             let avatarImageView = avatarImageView,
             let nameLabel = nameLabel,
@@ -56,7 +80,7 @@ class ProfileViewController: UIViewController {
             let companyLabel = companyLabel,
             let catchPhraseLabel = catchPhraseLabel,
             let bsLabel = bsLabel {
-            let data = try? Data(contentsOf: user.avatar.medium)
+            let data = try? Data(contentsOf: user.avatar.large)
             avatarImageView.image = UIImage(data: data!)
             nameLabel.text = user.name
             emailLabel.text = user.email
@@ -72,5 +96,89 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    // MARK: - Request and parse /albums
+    func fetchAlbums(url: URL) {
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            //Ensure there is no error for this HTTP response
+            guard error == nil else {
+                print("Error, \(error!)")
+                return
+            }
+            //Ensure there is data returned from this HTTP response
+            guard let data = data else {
+                print("No data")
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                let data = try decoder.decode([Album].self, from: data)
+                self.albums = data
+                
+                DispatchQueue.main.async {
+                    self.albumTableView.reloadData()
+                }
+                
+            } catch {
+                print(error)
+            }
+        }
+        //Execute the HTTP request
+        task.resume()
+    }
+    
+    // MARK: - Request and parse /photos
+    func fetchPhotos(url: URL) {
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            //Ensure there is no error for this HTTP response
+            guard error == nil else {
+                print("Error, \(error!)")
+                return
+            }
+            //Ensure there is data returned from this HTTP response
+            guard let data = data else {
+                print("No data")
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                let data = try decoder.decode([Photo].self, from: data)
+                self.photos = data
+                
+                DispatchQueue.main.async {
+                    self.albumTableView.reloadData()
+                }
+                
+            } catch {
+                print(error)
+            }
+        }
+        //Execute the HTTP request
+        task.resume()
+    }
+    
+    // MARK: - Table view data source
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.albums.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "albumCell", for: indexPath) as! AlbumCell
+        
+        let album = self.albums[indexPath.row]
+        for photo in photos {
+            if user?.id == album.userId {
+                    if photo.albumId == album.id {
+                        cell.albumTitleLabel.text = album.title
+                        let data = try? Data(contentsOf: photo.thumbnailUrl)
+                        cell.photo1ImageView.image = UIImage(data: data!)
+                }
+            }
+        }
+        
+        return cell
+    }
     
 }
+
+

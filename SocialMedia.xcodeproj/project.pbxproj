@@ -12,9 +12,6 @@
 		7334E650239AA869009D9F66 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7334E64F239AA869009D9F66 /* ProfileViewController.swift */; };
 		733F146E239ADC28000FC43C /* AlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 733F146D239ADC28000FC43C /* AlbumCell.xib */; };
 		733F1470239ADDDF000FC43C /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733F146F239ADDDF000FC43C /* AlbumCell.swift */; };
-		733F1473239ADFE9000FC43C /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733F1472239ADFE9000FC43C /* PostModel.swift */; };
-		733F1475239ADFF4000FC43C /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733F1474239ADFF4000FC43C /* AlbumModel.swift */; };
-		733F1479239AE028000FC43C /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733F1478239AE028000FC43C /* PhotoModel.swift */; };
 		7386723323973E8F00B1DB01 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7386723223973E8F00B1DB01 /* HomeTableViewController.swift */; };
 		73953DC92396AF3300F5C458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73953DC82396AF3300F5C458 /* AppDelegate.swift */; };
 		73953DCB2396AF3300F5C458 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73953DCA2396AF3300F5C458 /* SceneDelegate.swift */; };
@@ -24,7 +21,6 @@
 		73953DD82396AF3500F5C458 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73953DD62396AF3500F5C458 /* LaunchScreen.storyboard */; };
 		73953DE32396AF3500F5C458 /* SocialMediaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73953DE22396AF3500F5C458 /* SocialMediaTests.swift */; };
 		73953DEE2396AF3500F5C458 /* SocialMediaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73953DED2396AF3500F5C458 /* SocialMediaUITests.swift */; };
-		73953DFC2396B77000F5C458 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73953DFB2396B77000F5C458 /* APIController.swift */; };
 		73953DFF2396BBCD00F5C458 /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73953DFE2396BBCD00F5C458 /* PostCell.xib */; };
 		73953E082397315900F5C458 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73953E072397315900F5C458 /* PostCell.swift */; };
 		73F2B26923998C310004440D /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F2B26823998C310004440D /* UserModel.swift */; };
@@ -57,9 +53,6 @@
 		7334E64F239AA869009D9F66 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		733F146D239ADC28000FC43C /* AlbumCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumCell.xib; sourceTree = "<group>"; };
 		733F146F239ADDDF000FC43C /* AlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
-		733F1472239ADFE9000FC43C /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
-		733F1474239ADFF4000FC43C /* AlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
-		733F1478239AE028000FC43C /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		7386723223973E8F00B1DB01 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		73953DC52396AF3300F5C458 /* SocialMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73953DC82396AF3300F5C458 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,7 +68,6 @@
 		73953DE92396AF3500F5C458 /* SocialMediaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SocialMediaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73953DED2396AF3500F5C458 /* SocialMediaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaUITests.swift; sourceTree = "<group>"; };
 		73953DEF2396AF3500F5C458 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		73953DFB2396B77000F5C458 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		73953DFE2396BBCD00F5C458 /* PostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
 		73953E072397315900F5C458 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		73F2B26823998C310004440D /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -170,9 +162,6 @@
 			isa = PBXGroup;
 			children = (
 				73F2B26823998C310004440D /* UserModel.swift */,
-				733F1472239ADFE9000FC43C /* PostModel.swift */,
-				733F1474239ADFF4000FC43C /* AlbumModel.swift */,
-				733F1478239AE028000FC43C /* PhotoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -193,7 +182,6 @@
 		73953E042396BE9C00F5C458 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				73953DFB2396B77000F5C458 /* APIController.swift */,
 				7386723223973E8F00B1DB01 /* HomeTableViewController.swift */,
 				7334E64F239AA869009D9F66 /* ProfileViewController.swift */,
 			);
@@ -475,16 +463,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				73953E082397315900F5C458 /* PostCell.swift in Sources */,
-				733F1473239ADFE9000FC43C /* PostModel.swift in Sources */,
 				73953DC92396AF3300F5C458 /* AppDelegate.swift in Sources */,
 				73F2B26923998C310004440D /* UserModel.swift in Sources */,
 				73953DCB2396AF3300F5C458 /* SceneDelegate.swift in Sources */,
 				73953DD32396AF3300F5C458 /* SocialMedia.xcdatamodeld in Sources */,
 				7386723323973E8F00B1DB01 /* HomeTableViewController.swift in Sources */,
 				7334E650239AA869009D9F66 /* ProfileViewController.swift in Sources */,
-				733F1475239ADFF4000FC43C /* AlbumModel.swift in Sources */,
-				73953DFC2396B77000F5C458 /* APIController.swift in Sources */,
-				733F1479239AE028000FC43C /* PhotoModel.swift in Sources */,
 				733F1470239ADDDF000FC43C /* AlbumCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

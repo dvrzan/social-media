@@ -12,16 +12,11 @@ class HomeTableViewController: UITableViewController {
     
     var users: [User] = []
     var posts: [Post] = []
-    var albums: [Album] = []
-    var photos: [Photo] = []
     
-    @IBOutlet var postTableView: UITableView!
-    
-    //static let shared = HomeTableViewController()
     let usersUrl = URL(string: "https://api.myjson.com/bins/mnlx0")
     let postsUrl = URL(string: "https://jsonplaceholder.typicode.com/posts")
-    let albumsUrl = URL(string: "https://jsonplaceholder.typicode.com/albums")
-    let photosUrl = URL(string: "https://jsonplaceholder.typicode.com/photos")
+    
+    @IBOutlet var postTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +25,7 @@ class HomeTableViewController: UITableViewController {
         
         fetchUsers(url: usersUrl!)
         fetchPosts(url: postsUrl!)
+        
     }
     
     // MARK: - Request and parse /users

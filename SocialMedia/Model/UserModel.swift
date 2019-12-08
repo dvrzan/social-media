@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 
 struct User: Decodable {
     let id: Int
@@ -46,7 +47,36 @@ struct User: Decodable {
     
 }
 
-extension User {
+class Geo: NSObject, MKAnnotation {
+    var coordinate: CLLocationCoordinate2D
+    
+    init(coordinate: CLLocationCoordinate2D) {
+        self.coordinate = coordinate
+    }
+}
+
+struct Post: Decodable {
+    let userId: Int
+    let id: Int
+    let title: String
+    let body: String
+}
+
+struct Album: Decodable {
+    let userId: Int
+    let id: Int
+    let title: String
+}
+
+struct Photo: Decodable {
+    let albumId: Int
+    let id: Int
+    let title: String
+    let url: URL
+    let thumbnailUrl: URL
+}
+
+//extension User {
     //        static func users() -> [User] {
     //            guard
     //                let url = URL(string: APIController.shared.usersEndpoint),
@@ -91,5 +121,4 @@ extension User {
 //        task.resume()
 //    }
     
-    
-}
+//}

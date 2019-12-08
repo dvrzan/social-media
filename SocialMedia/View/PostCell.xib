@@ -31,17 +31,17 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Asc-N6-JHV">
-                        <rect key="frame" x="10" y="71" width="30" height="18"/>
+                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Asc-N6-JHV">
+                        <rect key="frame" x="10" y="71" width="384" height="18"/>
                         <accessibility key="accessibilityConfiguration">
                             <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                         </accessibility>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Jm-Ff-1db">
-                        <rect key="frame" x="10" y="97" width="70" height="16"/>
+                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Jm-Ff-1db">
+                        <rect key="frame" x="10" y="97" width="384" height="16"/>
                         <accessibility key="accessibilityConfiguration">
                             <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                         </accessibility>
@@ -51,17 +51,18 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Asc-N6-JHV" firstAttribute="top" secondItem="OzR-jt-5oG" secondAttribute="bottom" constant="8" id="1xH-IU-xs7"/>
+                    <constraint firstItem="2Jm-Ff-1db" firstAttribute="top" secondItem="Asc-N6-JHV" secondAttribute="bottom" constant="8" id="8hH-tE-lwr"/>
                     <constraint firstItem="OzR-jt-5oG" firstAttribute="top" secondItem="e6z-Se-As7" secondAttribute="top" constant="10" id="BxM-Kb-JlP"/>
-                    <constraint firstItem="2Jm-Ff-1db" firstAttribute="leading" secondItem="e6z-Se-As7" secondAttribute="leading" constant="10" id="HTA-5z-aLN"/>
+                    <constraint firstItem="ec3-h4-WIG" firstAttribute="bottom" secondItem="2Jm-Ff-1db" secondAttribute="bottom" constant="32" id="Kfz-pF-f5e"/>
+                    <constraint firstItem="Asc-N6-JHV" firstAttribute="top" secondItem="OzR-jt-5oG" secondAttribute="bottom" constant="8" id="QWX-Tj-c0W"/>
                     <constraint firstItem="jCV-wm-E7X" firstAttribute="leading" secondItem="OzR-jt-5oG" secondAttribute="trailing" constant="8" id="QvG-vY-HLM"/>
-                    <constraint firstItem="Asc-N6-JHV" firstAttribute="leading" secondItem="e6z-Se-As7" secondAttribute="leading" constant="10" id="T3k-ge-2BR"/>
-                    <constraint firstItem="Asc-N6-JHV" firstAttribute="top" secondItem="OzR-jt-5oG" secondAttribute="bottom" constant="8" id="VSO-2C-zIB"/>
                     <constraint firstItem="jCV-wm-E7X" firstAttribute="top" secondItem="e6z-Se-As7" secondAttribute="top" constant="25" id="WBK-mY-Xdx"/>
+                    <constraint firstItem="Asc-N6-JHV" firstAttribute="trailing" secondItem="2Jm-Ff-1db" secondAttribute="trailing" id="eeE-Io-wNx"/>
                     <constraint firstItem="jCV-wm-E7X" firstAttribute="leading" secondItem="OzR-jt-5oG" secondAttribute="trailing" constant="8" id="ejP-QV-Dni"/>
+                    <constraint firstItem="2Jm-Ff-1db" firstAttribute="trailing" secondItem="e6z-Se-As7" secondAttribute="trailingMargin" id="fas-43-LLi"/>
                     <constraint firstItem="OzR-jt-5oG" firstAttribute="leading" secondItem="e6z-Se-As7" secondAttribute="leading" constant="10" id="hgf-e8-qBB"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="2Jm-Ff-1db" secondAttribute="bottom" constant="21" id="pIr-8O-BAl"/>
-                    <constraint firstItem="2Jm-Ff-1db" firstAttribute="top" secondItem="Asc-N6-JHV" secondAttribute="bottom" constant="8" id="tyb-ea-BKq"/>
+                    <constraint firstItem="Asc-N6-JHV" firstAttribute="leading" secondItem="2Jm-Ff-1db" secondAttribute="leading" id="kEo-ca-6mX"/>
+                    <constraint firstItem="Asc-N6-JHV" firstAttribute="leading" secondItem="OzR-jt-5oG" secondAttribute="leading" id="lr2-42-ShW"/>
                 </constraints>
                 <viewLayoutGuide key="safeArea" id="ec3-h4-WIG"/>
             </tableViewCellContentView>

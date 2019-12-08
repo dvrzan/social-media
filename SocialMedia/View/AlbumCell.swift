@@ -16,5 +16,4 @@ class AlbumCell: UITableViewCell {
     @IBOutlet var photo3ImageView: UIImageView!
     @IBOutlet var photo4ImageView: UIImageView!
     
-    
 }
