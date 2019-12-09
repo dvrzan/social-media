@@ -18,10 +18,11 @@ class PhotoCollectionViewController: UICollectionViewController {
     
     let photosUrl = "https://jsonplaceholder.typicode.com/photos?albumId="
     
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        photoCollectionView.dataSource = self
+        photoCollectionView.delegate = self
         
         photoCollectionView.register(UINib(nibName: "PhotoCell", bundle: nil), forCellWithReuseIdentifier: "photoCell")
         
@@ -62,6 +63,21 @@ class PhotoCollectionViewController: UICollectionViewController {
         task.resume()
     }
     
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            segue.identifier == "ShowSinglePhoto",
+            let indexPath = photoCollectionView.indexPathsForSelectedItems,
+            let photoViewController = segue.destination as? PhotoViewController
+            else {
+                return
+        }
+        
+        let photo = photos[indexPath[0].row]
+        photoViewController.photo = photo
+        
+    }
+    
     // MARK: UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -78,4 +94,12 @@ class PhotoCollectionViewController: UICollectionViewController {
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+          defer {
+            collectionView.deselectItem(at: indexPath, animated: true)
+          }
+          
+          let photo = photos[indexPath.row]
+          performSegue(withIdentifier: "ShowSinglePhoto", sender: photo)
+        }
 }
