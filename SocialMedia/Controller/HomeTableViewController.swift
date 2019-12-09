@@ -16,16 +16,47 @@ class HomeTableViewController: UITableViewController {
     let usersUrl = URL(string: "https://api.myjson.com/bins/mnlx0")
     let postsUrl = URL(string: "https://jsonplaceholder.typicode.com/posts")
     
+    var indicator = UIActivityIndicatorView()
+    
     @IBOutlet var postTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        postTableView.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "postCell")
+        activityIndicator()
+        indicator.startAnimating()
+        indicator.backgroundColor = UIColor.white
         
         fetchUsers(url: usersUrl!)
         fetchPosts(url: postsUrl!)
         
+        postTableView.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "postCell")
+        
+        postTableView.dataSource = self
+        postTableView.delegate = self
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+    
+    func activityIndicator() {
+        indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        indicator.style = UIActivityIndicatorView.Style.large
+        indicator.color = .gray
+        indicator.center = self.view.center
+        self.view.addSubview(indicator)
+    }
+    
+    func renderRows() {
+        if self.posts.isEmpty || self.users.isEmpty {
+            return
+        }
+        self.postTableView.reloadData()
+        indicator.stopAnimating()
+        indicator.hidesWhenStopped = true
     }
     
     // MARK: - Request and parse /users
@@ -47,7 +78,7 @@ class HomeTableViewController: UITableViewController {
                 self.users = data
                 
                 DispatchQueue.main.async {
-                    self.tableView.reloadData()
+                    self.renderRows()
                 }
                 
             } catch {
@@ -77,7 +108,7 @@ class HomeTableViewController: UITableViewController {
                 self.posts = data
                 
                 DispatchQueue.main.async {
-                    self.tableView.reloadData()
+                    self.renderRows()
                 }
                 
             } catch {
@@ -126,6 +157,7 @@ class HomeTableViewController: UITableViewController {
                 cell.nameLabel.text = user.name
                 let data = try? Data(contentsOf: user.avatar.thumbnail)
                 cell.avatarImageView.image = UIImage(data: data!)
+                break
             }
         }
         return cell

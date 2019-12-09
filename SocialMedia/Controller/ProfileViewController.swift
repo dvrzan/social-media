@@ -9,13 +9,12 @@
 import UIKit
 import MapKit
 
-class ProfileViewController: UIViewController, UITableViewDataSource {
+class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var albums: [Album] = []
     var photos: [Photo] = []
     
-    let albumsUrl = URL(string: "https://jsonplaceholder.typicode.com/albums")
-    let photosUrl = URL(string: "https://jsonplaceholder.typicode.com/photos")
+    let albumsUrl = "https://jsonplaceholder.typicode.com/albums?userId="
     
     @IBOutlet var avatarImageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
@@ -40,6 +39,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         
         albumTableView.dataSource = self
+        albumTableView.delegate = self
         
         let latitude = CLLocationDegrees(Double((user?.address.geo.lat)!)!)
         let longitude = CLLocationDegrees(Double((user?.address.geo.lng)!)!)
@@ -53,8 +53,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         
         albumTableView.register(UINib(nibName: "AlbumCell", bundle: nil), forCellReuseIdentifier: "albumCell")
         
-        fetchAlbums(url: albumsUrl!)
-        fetchPhotos(url: photosUrl!)
+        if let fetchUser = user {
+            fetchAlbums(url: URL(string: albumsUrl + String(describing: fetchUser.id))!)
+        }
+        //fetchAlbums(url: URL(string: albumsUrl + String(describing: user?.id))!)
+        //fetchPhotos(url: URL(string: photosUrl)!)
         
     }
     
@@ -126,34 +129,19 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         task.resume()
     }
     
-    // MARK: - Request and parse /photos
-    func fetchPhotos(url: URL) {
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            //Ensure there is no error for this HTTP response
-            guard error == nil else {
-                print("Error, \(error!)")
+       // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            segue.identifier == "ShowPhotosScreen",
+            let indexPath = albumTableView.indexPathForSelectedRow,
+            let photoCollectionViewController = segue.destination as? PhotoCollectionViewController
+            else {
                 return
-            }
-            //Ensure there is data returned from this HTTP response
-            guard let data = data else {
-                print("No data")
-                return
-            }
-            do {
-                let decoder = JSONDecoder()
-                let data = try decoder.decode([Photo].self, from: data)
-                self.photos = data
-                
-                DispatchQueue.main.async {
-                    self.albumTableView.reloadData()
-                }
-                
-            } catch {
-                print(error)
-            }
         }
-        //Execute the HTTP request
-        task.resume()
+        
+        let album = albums[indexPath.row]
+        photoCollectionViewController.album = album
+        
     }
     
     // MARK: - Table view data source
@@ -166,17 +154,18 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "albumCell", for: indexPath) as! AlbumCell
         
         let album = self.albums[indexPath.row]
-        for photo in photos {
-            if user?.id == album.userId {
-                    if photo.albumId == album.id {
-                        cell.albumTitleLabel.text = album.title
-                        let data = try? Data(contentsOf: photo.thumbnailUrl)
-                        cell.photo1ImageView.image = UIImage(data: data!)
-                }
-            }
-        }
+        cell.albumTitleLabel.text = album.title
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      defer {
+        tableView.deselectRow(at: indexPath, animated: true)
+      }
+      
+      let album = albums[indexPath.row]
+      performSegue(withIdentifier: "ShowPhotosScreen", sender: album)
     }
     
 }

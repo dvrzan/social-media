@@ -11,9 +11,5 @@ import UIKit
 class AlbumCell: UITableViewCell {
     
     @IBOutlet var albumTitleLabel: UILabel!
-    @IBOutlet var photo1ImageView: UIImageView!
-    @IBOutlet var photo2ImageView: UIImageView!
-    @IBOutlet var photo3ImageView: UIImageView!
-    @IBOutlet var photo4ImageView: UIImageView!
     
 }

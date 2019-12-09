@@ -8,46 +8,26 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="albumCell" rowHeight="155" id="38a-PW-1rQ" customClass="AlbumCell" customModule="SocialMedia" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="155"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="albumCell" rowHeight="52" id="38a-PW-1rQ" customClass="AlbumCell" customModule="SocialMedia" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="38a-PW-1rQ" id="bRh-Zh-IeY">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="155"/>
+                <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Winter Holidays" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2G-s9-B7g" userLabel="AlbumTitleJson">
+                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Winter Holidays" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2G-s9-B7g" userLabel="AlbumTitleJson">
                         <rect key="frame" x="20" y="7" width="384" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cmS-z9-NQj" userLabel="Photo1Thumbnail">
-                        <rect key="frame" x="20" y="55" width="90" height="90"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cZE-4U-qBY" userLabel="Photo2Thumbnail">
-                        <rect key="frame" x="118" y="55" width="90" height="90"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sjx-90-C7Q" userLabel="Photo3Thumbnail">
-                        <rect key="frame" x="216" y="55" width="90" height="90"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wCu-qg-UnM" userLabel="Photo4Thumbnail">
-                        <rect key="frame" x="314" y="55" width="90" height="90"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="albumTitleLabel" destination="b2G-s9-B7g" id="lqy-UF-UST"/>
-                <outlet property="photo1ImageView" destination="cmS-z9-NQj" id="VFN-As-Mvm"/>
-                <outlet property="photo2ImageView" destination="cZE-4U-qBY" id="qQr-Rl-hRm"/>
-                <outlet property="photo3ImageView" destination="sjx-90-C7Q" id="6ox-MC-U22"/>
-                <outlet property="photo4ImageView" destination="wCu-qg-UnM" id="dHD-5Q-ULN"/>
             </connections>
-            <point key="canvasLocation" x="40.579710144927539" y="14.397321428571427"/>
+            <point key="canvasLocation" x="40.579710144927539" y="-20.089285714285712"/>
         </tableViewCell>
     </objects>
 </document>

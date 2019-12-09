@@ -23,6 +23,9 @@
 		73953DEE2396AF3500F5C458 /* SocialMediaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73953DED2396AF3500F5C458 /* SocialMediaUITests.swift */; };
 		73953DFF2396BBCD00F5C458 /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73953DFE2396BBCD00F5C458 /* PostCell.xib */; };
 		73953E082397315900F5C458 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73953E072397315900F5C458 /* PostCell.swift */; };
+		73AB5C18239DE00400518579 /* PhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AB5C17239DE00400518579 /* PhotoCollectionViewController.swift */; };
+		73AB5C1A239DE12900518579 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AB5C19239DE12900518579 /* PhotoCell.swift */; };
+		73AB5C1C239DE15300518579 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73AB5C1B239DE15300518579 /* PhotoCell.xib */; };
 		73F2B26923998C310004440D /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F2B26823998C310004440D /* UserModel.swift */; };
 		C7FBBC831B9400B03902F11F /* Pods_SocialMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB6E7A16FA0EDDE17A9D6B9 /* Pods_SocialMedia.framework */; };
 /* End PBXBuildFile section */
@@ -70,6 +73,9 @@
 		73953DEF2396AF3500F5C458 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		73953DFE2396BBCD00F5C458 /* PostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
 		73953E072397315900F5C458 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		73AB5C17239DE00400518579 /* PhotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewController.swift; sourceTree = "<group>"; };
+		73AB5C19239DE12900518579 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		73AB5C1B239DE15300518579 /* PhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 		73F2B26823998C310004440D /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		8152EA8A88DA8C77892DA454 /* Pods-SocialMediaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialMediaTests.debug.xcconfig"; path = "Target Support Files/Pods-SocialMediaTests/Pods-SocialMediaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CFB6E7A16FA0EDDE17A9D6B9 /* Pods_SocialMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +181,8 @@
 				73953E072397315900F5C458 /* PostCell.swift */,
 				733F146D239ADC28000FC43C /* AlbumCell.xib */,
 				733F146F239ADDDF000FC43C /* AlbumCell.swift */,
+				73AB5C19239DE12900518579 /* PhotoCell.swift */,
+				73AB5C1B239DE15300518579 /* PhotoCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -184,6 +192,7 @@
 			children = (
 				7386723223973E8F00B1DB01 /* HomeTableViewController.swift */,
 				7334E64F239AA869009D9F66 /* ProfileViewController.swift */,
+				73AB5C17239DE00400518579 /* PhotoCollectionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -330,6 +339,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73AB5C1C239DE15300518579 /* PhotoCell.xib in Resources */,
 				73953DD82396AF3500F5C458 /* LaunchScreen.storyboard in Resources */,
 				73953DD52396AF3500F5C458 /* Assets.xcassets in Resources */,
 				733F146E239ADC28000FC43C /* AlbumCell.xib in Resources */,
@@ -466,7 +476,9 @@
 				73953DC92396AF3300F5C458 /* AppDelegate.swift in Sources */,
 				73F2B26923998C310004440D /* UserModel.swift in Sources */,
 				73953DCB2396AF3300F5C458 /* SceneDelegate.swift in Sources */,
+				73AB5C18239DE00400518579 /* PhotoCollectionViewController.swift in Sources */,
 				73953DD32396AF3300F5C458 /* SocialMedia.xcdatamodeld in Sources */,
+				73AB5C1A239DE12900518579 /* PhotoCell.swift in Sources */,
 				7386723323973E8F00B1DB01 /* HomeTableViewController.swift in Sources */,
 				7334E650239AA869009D9F66 /* ProfileViewController.swift in Sources */,
 				733F1470239ADDDF000FC43C /* AlbumCell.swift in Sources */,
