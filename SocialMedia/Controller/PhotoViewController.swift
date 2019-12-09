@@ -10,16 +10,16 @@ import UIKit
 
 class PhotoViewController: UIViewController {
     
-    var photo: Photo?
-    
     @IBOutlet var photoImageView: UIImageView!
+    
+    var photo: Photo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let data = try? Data(contentsOf: photo!.url)
         photoImageView.image = UIImage(data: data!)
         
     }
-
+    
 }

@@ -10,15 +10,16 @@ import UIKit
 
 class HomeTableViewController: UITableViewController {
     
+    @IBOutlet var postTableView: UITableView!
+    
     var users: [User] = []
     var posts: [Post] = []
     
+    //Extracted json from engineering.league.com/challenge/api/users
     let usersUrl = URL(string: "https://api.myjson.com/bins/mnlx0")
     let postsUrl = URL(string: "https://jsonplaceholder.typicode.com/posts")
     
     var indicator = UIActivityIndicatorView()
-    
-    @IBOutlet var postTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,6 @@ class HomeTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
     }
     
     func activityIndicator() {
@@ -59,7 +59,7 @@ class HomeTableViewController: UITableViewController {
         indicator.hidesWhenStopped = true
     }
     
-    // MARK: - Request and parse /users
+    // MARK: Request and parse /users
     func fetchUsers(url: URL) {
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             //Ensure there is no error for this HTTP response
@@ -89,7 +89,7 @@ class HomeTableViewController: UITableViewController {
         task.resume()
     }
     
-    // MARK: - Request and parse /posts
+    // MARK: Request and parse /posts
     func fetchPosts(url: URL) {
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             //Ensure there is no error for this HTTP response
@@ -119,7 +119,7 @@ class HomeTableViewController: UITableViewController {
         task.resume()
     }
     
-    //MARK: - Segue
+    //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard
             segue.identifier == "ShowProfileScreen",
@@ -139,12 +139,10 @@ class HomeTableViewController: UITableViewController {
     }
     
     
-    // MARK: - Table view data source
-    
+    // MARK: TableViewDataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.posts.count
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostCell
@@ -164,12 +162,12 @@ class HomeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      defer {
-        tableView.deselectRow(at: indexPath, animated: true)
-      }
-      
-      let post = posts[indexPath.row]
-      performSegue(withIdentifier: "ShowProfileScreen", sender: post)
+        defer {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        
+        let post = posts[indexPath.row]
+        performSegue(withIdentifier: "ShowProfileScreen", sender: post)
     }
     
 }

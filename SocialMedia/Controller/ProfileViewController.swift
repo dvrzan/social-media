@@ -11,11 +11,6 @@ import MapKit
 
 class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var albums: [Album] = []
-    var photos: [Photo] = []
-    
-    let albumsUrl = "https://jsonplaceholder.typicode.com/albums?userId="
-    
     @IBOutlet var avatarImageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var emailLabel: UILabel!
@@ -35,6 +30,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var user: User?
     
+    var albums: [Album] = []
+    var photos: [Photo] = []
+    
+    let albumsUrl = "https://jsonplaceholder.typicode.com/albums?userId="
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,18 +46,16 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let location = Geo(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
         
-        configureUserInfo()
-        
         mapView.addAnnotation(location)
         mapView.setCenter(CLLocationCoordinate2D(latitude: latitude, longitude: longitude), animated: false)
+        
+        configureUserInfo()
         
         albumTableView.register(UINib(nibName: "AlbumCell", bundle: nil), forCellReuseIdentifier: "albumCell")
         
         if let fetchUser = user {
             fetchAlbums(url: URL(string: albumsUrl + String(describing: fetchUser.id))!)
         }
-        //fetchAlbums(url: URL(string: albumsUrl + String(describing: user?.id))!)
-        //fetchPhotos(url: URL(string: photosUrl)!)
         
     }
     
@@ -99,7 +97,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    // MARK: - Request and parse /albums
+    // MARK: Request and parse /albums
     func fetchAlbums(url: URL) {
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             //Ensure there is no error for this HTTP response
@@ -129,7 +127,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         task.resume()
     }
     
-       // MARK: - Navigation
+    // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard
             segue.identifier == "ShowPhotosScreen",
@@ -144,7 +142,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
     }
     
-    // MARK: - Table view data source
+    // MARK: - TableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.albums.count
     }
@@ -160,12 +158,12 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      defer {
-        tableView.deselectRow(at: indexPath, animated: true)
-      }
-      
-      let album = albums[indexPath.row]
-      performSegue(withIdentifier: "ShowPhotosScreen", sender: album)
+        defer {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        
+        let album = albums[indexPath.row]
+        performSegue(withIdentifier: "ShowPhotosScreen", sender: album)
     }
     
 }

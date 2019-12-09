@@ -13,10 +13,11 @@ class PhotoCollectionViewController: UICollectionViewController {
     @IBOutlet var photoCollectionView: UICollectionView!
     
     var photos: [Photo] = []
-    
     var album: Album?
     
     let photosUrl = "https://jsonplaceholder.typicode.com/photos?albumId="
+    
+    var indicator = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,14 +27,35 @@ class PhotoCollectionViewController: UICollectionViewController {
         
         photoCollectionView.register(UINib(nibName: "PhotoCell", bundle: nil), forCellWithReuseIdentifier: "photoCell")
         
+        activityIndicator()
+        indicator.startAnimating()
+        indicator.backgroundColor = UIColor.white
+        
         if let fetchAlbum = album {
             fetchPhotos(url: URL(string: photosUrl + String(describing: fetchAlbum.id))!)
         }
         
     }
     
+    func activityIndicator() {
+        indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        indicator.style = UIActivityIndicatorView.Style.large
+        indicator.color = .gray
+        indicator.center = self.view.center
+        self.view.addSubview(indicator)
+    }
     
-    // MARK: - Request and parse /photos
+    func renderRows() {
+        if self.photos.isEmpty {
+            return
+        }
+        self.photoCollectionView.reloadData()
+        indicator.stopAnimating()
+        indicator.hidesWhenStopped = true
+    }
+    
+    
+    // MARK: Request and parse /photos
     func fetchPhotos(url: URL) {
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             //Ensure there is no error for this HTTP response
@@ -52,7 +74,7 @@ class PhotoCollectionViewController: UICollectionViewController {
                 self.photos = data
                 
                 DispatchQueue.main.async {
-                    self.photoCollectionView.reloadData()
+                    self.renderRows()
                 }
                 
             } catch {
@@ -63,7 +85,7 @@ class PhotoCollectionViewController: UICollectionViewController {
         task.resume()
     }
     
-    // MARK: - Navigation
+    // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard
             segue.identifier == "ShowSinglePhoto",
@@ -79,7 +101,6 @@ class PhotoCollectionViewController: UICollectionViewController {
     }
     
     // MARK: UICollectionViewDataSource
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.photos.count
     }
@@ -95,11 +116,12 @@ class PhotoCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-          defer {
+        defer {
             collectionView.deselectItem(at: indexPath, animated: true)
-          }
-          
-          let photo = photos[indexPath.row]
-          performSegue(withIdentifier: "ShowSinglePhoto", sender: photo)
         }
+        
+        let photo = photos[indexPath.row]
+        performSegue(withIdentifier: "ShowSinglePhoto", sender: photo)
+    }
+    
 }
