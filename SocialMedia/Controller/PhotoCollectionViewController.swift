@@ -17,19 +17,15 @@ class PhotoCollectionViewController: UICollectionViewController {
     
     let photosUrl = "https://jsonplaceholder.typicode.com/photos?albumId="
     
-    var indicator = UIActivityIndicatorView()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        showSpinner(onView: view)
         
         photoCollectionView.dataSource = self
         photoCollectionView.delegate = self
         
         photoCollectionView.register(UINib(nibName: "PhotoCell", bundle: nil), forCellWithReuseIdentifier: "photoCell")
-        
-        activityIndicator()
-        indicator.startAnimating()
-        indicator.backgroundColor = UIColor.white
         
         if let fetchAlbum = album {
             fetchPhotos(url: URL(string: photosUrl + String(describing: fetchAlbum.id))!)
@@ -37,21 +33,19 @@ class PhotoCollectionViewController: UICollectionViewController {
         
     }
     
-    func activityIndicator() {
-        indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        indicator.style = UIActivityIndicatorView.Style.large
-        indicator.color = .gray
-        indicator.center = self.view.center
-        self.view.addSubview(indicator)
-    }
-    
     func renderRows() {
         if self.photos.isEmpty {
             return
         }
         self.photoCollectionView.reloadData()
-        indicator.stopAnimating()
-        indicator.hidesWhenStopped = true
+        removeSpinner()
+    }
+    
+    //MARK: Alert
+    func showError() {
+        let alert = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
     
     
@@ -61,11 +55,15 @@ class PhotoCollectionViewController: UICollectionViewController {
             //Ensure there is no error for this HTTP response
             guard error == nil else {
                 print("Error, \(error!)")
+                self.removeSpinner()
+                self.showError()
                 return
             }
             //Ensure there is data returned from this HTTP response
             guard let data = data else {
                 print("No data")
+                self.removeSpinner()
+                self.showError()
                 return
             }
             do {
@@ -79,6 +77,8 @@ class PhotoCollectionViewController: UICollectionViewController {
                 
             } catch {
                 print(error)
+                self.removeSpinner()
+                self.showError()
             }
         }
         //Execute the HTTP request

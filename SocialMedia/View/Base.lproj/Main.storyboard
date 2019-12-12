@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ViQ-Z7-pcK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="InQ-hW-Egs">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +13,7 @@
         <scene sceneID="MGB-1p-g1b">
             <objects>
                 <tableViewController title="Home" id="FwJ-zU-nDt" customClass="HomeTableViewController" customModule="SocialMedia" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2AG-5v-Cga">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2AG-5v-Cga">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -36,6 +37,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Home" id="GZ1-FG-3Wv"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="postTableView" destination="2AG-5v-Cga" id="3iB-ob-AFs"/>
                     </connections>
@@ -87,7 +89,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIs-dc-A4p">
                                                         <rect key="frame" x="8" y="38" width="50" height="20"/>
@@ -188,7 +190,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Company:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWr-Zk-V0u">
                                                         <rect key="frame" x="8" y="38" width="78" height="21"/>
@@ -239,7 +241,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <view contentMode="scaleToFill" id="agx-xu-qhB" userLabel="Album container">
                                                 <rect key="frame" x="8" y="684" width="398" height="466"/>
@@ -388,21 +390,78 @@
             </objects>
             <point key="canvasLocation" x="3579.7101449275365" y="112.5"/>
         </scene>
+        <!--Welcome-->
+        <scene sceneID="ypY-cx-GiJ">
+            <objects>
+                <viewController title="Welcome" id="InQ-hW-Egs" customClass="WelcomeScreenViewController" customModule="SocialMedia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N5i-Aq-cij">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome," textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKV-ic-U9o">
+                                <rect key="frame" x="10" y="435" width="394" height="26"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gz9-mb-bfi">
+                                <rect key="frame" x="100" y="712" width="214" height="50"/>
+                                <color key="backgroundColor" name="AppColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="XxT-nv-N2P"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
+                                <state key="normal" title="SIGN IN">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="ViQ-Z7-pcK" kind="show" id="9KU-DO-TdH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Gz9-mb-bfi" firstAttribute="leading" secondItem="aT8-0n-dic" secondAttribute="leading" constant="100" id="aAY-dh-C4Q"/>
+                            <constraint firstItem="aT8-0n-dic" firstAttribute="trailing" secondItem="Gz9-mb-bfi" secondAttribute="trailing" constant="100" id="cxm-vT-3Or"/>
+                            <constraint firstItem="aT8-0n-dic" firstAttribute="bottom" secondItem="Gz9-mb-bfi" secondAttribute="bottom" constant="100" id="mqa-I4-Gmh"/>
+                            <constraint firstItem="VKV-ic-U9o" firstAttribute="centerY" secondItem="N5i-Aq-cij" secondAttribute="centerY" id="nee-OX-iJt"/>
+                            <constraint firstItem="VKV-ic-U9o" firstAttribute="leading" secondItem="aT8-0n-dic" secondAttribute="leading" constant="10" id="xIp-ke-hpD"/>
+                            <constraint firstItem="aT8-0n-dic" firstAttribute="trailing" secondItem="VKV-ic-U9o" secondAttribute="trailing" constant="10" id="xlM-ap-gIK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aT8-0n-dic"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="lIT-gs-sir"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="signInButton" destination="Gz9-mb-bfi" id="CdT-Tc-VSO"/>
+                        <outlet property="welcomeLabel" destination="VKV-ic-U9o" id="xNl-UL-DI5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kfY-6E-JBV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1352" y="113"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="rBY-U7-Wmf">
             <objects>
-                <navigationController id="ViQ-Z7-pcK" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="ViQ-Z7-pcK" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="kzA-oz-XBv"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TG6-jO-297">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="FwJ-zU-nDt" kind="relationship" relationship="rootViewController" id="Yth-f5-hpr"/>
+                        <segue destination="FwJ-zU-nDt" kind="relationship" relationship="rootViewController" id="co7-bz-dEr"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wcM-MP-cRj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-245" y="113"/>
+            <point key="canvasLocation" x="-296" y="113"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="AppColor">
+            <color red="0.24687847499999999" green="0.74453943970000003" blue="0.73707282539999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

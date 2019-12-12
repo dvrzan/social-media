@@ -17,8 +17,12 @@ class PhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        showSpinner(onView: view)
+        
         let data = try? Data(contentsOf: photo!.url)
         photoImageView.image = UIImage(data: data!)
+        
+        removeSpinner()
         
     }
     

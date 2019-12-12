@@ -27,6 +27,8 @@
 		73AB5C1A239DE12900518579 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AB5C19239DE12900518579 /* PhotoCell.swift */; };
 		73AB5C1C239DE15300518579 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73AB5C1B239DE15300518579 /* PhotoCell.xib */; };
 		73AB5C22239DF29B00518579 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AB5C21239DF29B00518579 /* PhotoViewController.swift */; };
+		73CD3B6623A2C975002D825E /* UIView+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD3B6523A2C975002D825E /* UIView+ActivityIndicator.swift */; };
+		73CD3B6D23A2D6B5002D825E /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD3B6C23A2D6B5002D825E /* WelcomeScreenViewController.swift */; };
 		73F2B26923998C310004440D /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F2B26823998C310004440D /* UserModel.swift */; };
 		C7FBBC831B9400B03902F11F /* Pods_SocialMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB6E7A16FA0EDDE17A9D6B9 /* Pods_SocialMedia.framework */; };
 /* End PBXBuildFile section */
@@ -78,6 +80,8 @@
 		73AB5C19239DE12900518579 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		73AB5C1B239DE15300518579 /* PhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 		73AB5C21239DF29B00518579 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		73CD3B6523A2C975002D825E /* UIView+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ActivityIndicator.swift"; sourceTree = "<group>"; };
+		73CD3B6C23A2D6B5002D825E /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
 		73F2B26823998C310004440D /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		8152EA8A88DA8C77892DA454 /* Pods-SocialMediaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialMediaTests.debug.xcconfig"; path = "Target Support Files/Pods-SocialMediaTests/Pods-SocialMediaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CFB6E7A16FA0EDDE17A9D6B9 /* Pods_SocialMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +146,7 @@
 				73953E042396BE9C00F5C458 /* Controller */,
 				73953E032396BE8900F5C458 /* View */,
 				73953E022396BE7F00F5C458 /* Model */,
+				73CD3B6423A2C94A002D825E /* Extensions */,
 				73953DD42396AF3500F5C458 /* Assets.xcassets */,
 				73953DD92396AF3500F5C458 /* Info.plist */,
 			);
@@ -196,6 +201,7 @@
 				7334E64F239AA869009D9F66 /* ProfileViewController.swift */,
 				73AB5C17239DE00400518579 /* PhotoCollectionViewController.swift */,
 				73AB5C21239DF29B00518579 /* PhotoViewController.swift */,
+				73CD3B6C23A2D6B5002D825E /* WelcomeScreenViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -208,6 +214,14 @@
 				73953DD12396AF3300F5C458 /* SocialMedia.xcdatamodeld */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		73CD3B6423A2C94A002D825E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				73CD3B6523A2C975002D825E /* UIView+ActivityIndicator.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		AE2D2914EECD9BF0279C2BAD /* Frameworks */ = {
@@ -478,7 +492,9 @@
 				73953E082397315900F5C458 /* PostCell.swift in Sources */,
 				73953DC92396AF3300F5C458 /* AppDelegate.swift in Sources */,
 				73F2B26923998C310004440D /* UserModel.swift in Sources */,
+				73CD3B6623A2C975002D825E /* UIView+ActivityIndicator.swift in Sources */,
 				73953DCB2396AF3300F5C458 /* SceneDelegate.swift in Sources */,
+				73CD3B6D23A2D6B5002D825E /* WelcomeScreenViewController.swift in Sources */,
 				73AB5C18239DE00400518579 /* PhotoCollectionViewController.swift in Sources */,
 				73953DD32396AF3300F5C458 /* SocialMedia.xcdatamodeld in Sources */,
 				73AB5C1A239DE12900518579 /* PhotoCell.swift in Sources */,

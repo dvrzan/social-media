@@ -126,6 +126,22 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         //Execute the HTTP request
         task.resume()
     }
+
+    
+    // MARK: TableViewDataSource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.albums.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "albumCell", for: indexPath) as! AlbumCell
+        
+        let album = self.albums[indexPath.row]
+        cell.albumTitleLabel.text = album.title
+        
+        return cell
+    }
     
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -140,21 +156,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         let album = albums[indexPath.row]
         photoCollectionViewController.album = album
         
-    }
-    
-    // MARK: - TableViewDataSource
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.albums.count
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "albumCell", for: indexPath) as! AlbumCell
-        
-        let album = self.albums[indexPath.row]
-        cell.albumTitleLabel.text = album.title
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

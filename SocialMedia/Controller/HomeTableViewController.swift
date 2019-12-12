@@ -19,14 +19,10 @@ class HomeTableViewController: UITableViewController {
     let usersUrl = URL(string: "https://api.myjson.com/bins/mnlx0")
     let postsUrl = URL(string: "https://jsonplaceholder.typicode.com/posts")
     
-    var indicator = UIActivityIndicatorView()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        activityIndicator()
-        indicator.startAnimating()
-        indicator.backgroundColor = UIColor.white
+        showSpinner(onView: view)
         
         fetchUsers(url: usersUrl!)
         fetchPosts(url: postsUrl!)
@@ -42,21 +38,12 @@ class HomeTableViewController: UITableViewController {
         super.viewWillAppear(animated)
     }
     
-    func activityIndicator() {
-        indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        indicator.style = UIActivityIndicatorView.Style.large
-        indicator.color = .gray
-        indicator.center = self.view.center
-        self.view.addSubview(indicator)
-    }
-    
     func renderRows() {
         if self.posts.isEmpty || self.users.isEmpty {
             return
         }
         self.postTableView.reloadData()
-        indicator.stopAnimating()
-        indicator.hidesWhenStopped = true
+        removeSpinner()
     }
     
     // MARK: Request and parse /users
@@ -65,11 +52,15 @@ class HomeTableViewController: UITableViewController {
             //Ensure there is no error for this HTTP response
             guard error == nil else {
                 print("Error, \(error!)")
+                self.removeSpinner()
+                self.showError()
                 return
             }
             //Ensure there is data returned from this HTTP response
             guard let data = data else {
                 print("No data")
+                self.removeSpinner()
+                self.showError()
                 return
             }
             do {
@@ -83,6 +74,8 @@ class HomeTableViewController: UITableViewController {
                 
             } catch {
                 print(error)
+                self.removeSpinner()
+                self.showError()
             }
         }
         //Execute the HTTP request
@@ -95,11 +88,15 @@ class HomeTableViewController: UITableViewController {
             //Ensure there is no error for this HTTP response
             guard error == nil else {
                 print("Error, \(error!)")
+                self.removeSpinner()
+                self.showError()
                 return
             }
             //Ensure there is data returned from this HTTP response
             guard let data = data else {
                 print("No data")
+                self.removeSpinner()
+                self.showError()
                 return
             }
             do {
@@ -113,31 +110,20 @@ class HomeTableViewController: UITableViewController {
                 
             } catch {
                 print(error)
+                self.removeSpinner()
+                self.showError()
             }
         }
         //Execute the HTTP request
         task.resume()
     }
     
-    //MARK: Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard
-            segue.identifier == "ShowProfileScreen",
-            let indexPath = tableView.indexPathForSelectedRow,
-            let profileViewController = segue.destination as? ProfileViewController
-            else {
-                return
-        }
-        
-        let post = posts[indexPath.row]
-        for user in users {
-            if post.userId == user.id {
-                profileViewController.user = user
-            }
-        }
-        
+    //MARK: Alert
+    func showError() {
+        let alert = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
-    
     
     // MARK: TableViewDataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -159,6 +145,25 @@ class HomeTableViewController: UITableViewController {
             }
         }
         return cell
+    }
+    
+    //MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            segue.identifier == "ShowProfileScreen",
+            let indexPath = tableView.indexPathForSelectedRow,
+            let profileViewController = segue.destination as? ProfileViewController
+            else {
+                return
+        }
+        
+        let post = posts[indexPath.row]
+        for user in users {
+            if post.userId == user.id {
+                profileViewController.user = user
+            }
+        }
+        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
