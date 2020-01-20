@@ -2,6 +2,10 @@
 
 ## About the app
 
+<p align="center">
+  <img src="Documentation/preview.gif">
+</p>
+
 ### Analyzar and Twitter
 
 Social Media shows home view consisting of user names and their comments. User name and avatar are clickable and present a profile view that contains information about the clicked user.
@@ -20,5 +24,7 @@ Every JSON is a different endpoint.
 
 
 >This is a learning project created by implementing different Swift components. Check my portfolio at [dvrzan.github.io/portfolio/](https://dvrzan.github.io/portfolio/)
+
+</br>
 
 ![End Banner](Documentation/EndBanner.png)
