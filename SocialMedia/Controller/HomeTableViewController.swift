@@ -15,7 +15,7 @@ class HomeTableViewController: UITableViewController {
     var users: [User] = []
     var posts: [Post] = []
     
-    //Extracted json from engineering.league.com/challenge/api/users
+    //Same json from jsonplaceholder with users/ endpoint - this one also contains avatar 
     let usersUrl = URL(string: "https://api.myjson.com/bins/mnlx0")
     let postsUrl = URL(string: "https://jsonplaceholder.typicode.com/posts")
     
