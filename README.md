@@ -25,7 +25,7 @@ Every JSON is a different endpoint.
 </br>
 </br>
 
->This is a learning project created by implementing different Swift components. 
+>This is a learning project created by implementing different Swift components.</br>
 >Check my portfolio at [dvrzan.github.io/portfolio/](https://dvrzan.github.io/portfolio/)
 
 </br>
