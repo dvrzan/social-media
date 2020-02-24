@@ -1,4 +1,4 @@
-#  Social Media example
+#  Social Media POC
 
 ## About the app
 
