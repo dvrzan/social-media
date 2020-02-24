@@ -1,4 +1,4 @@
-#  Social Media POC
+#  Social Media prototype
 
 ## About the app
 
