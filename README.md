@@ -1,4 +1,4 @@
-#  Social Media prototype
+![Front Banner](Documentation/FrontBanner.png)
 
 ## About the app
 
