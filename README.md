@@ -8,7 +8,8 @@
 
 </br>
 
-Social Media shows home view consisting of user names and their comments. User name and avatar are clickable and present a profile view that contains information about the clicked user.
+
+A simple prototype social media app to show some basic concepts such as home screen showing names, avatars and posts, profile screen with detailed information about a contact, and albums list and pictures for each album. 
 
 Social Media uses https://jsonplaceholder.typicode.com API to fetch users, posts, albums, and their photos.
 Every JSON is a different endpoint.
@@ -21,6 +22,7 @@ Every JSON is a different endpoint.
 * HTTP requests with URLSession
 * Data rendering with DispatchQueue
 * Getting data from different API endpoints
+* Showing user's location using MapKit
 
 </br>
 </br>
