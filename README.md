@@ -3,7 +3,7 @@
 ## About the app
 
 <p align="center">
-  <img src="Documentation/preview.gif">
+  <img src="Documentation/app-preview.gif">
 </p>
 
 </br>
